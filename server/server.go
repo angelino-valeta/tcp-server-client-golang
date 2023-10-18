@@ -40,7 +40,7 @@ func main() {
 
 	defer listener.Close()
 
-	fmt.Printf("Server listenet on localhost:8080")
+	fmt.Printf("Server listener on localhost:8080\n")
 
 	// Waiting client connection
 	for {
