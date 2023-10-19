@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	if len(os.Args) != 2 {
+	if len(os.Args) != 3 {
 		fmt.Println("Usage: Client GO  <RUNNER>")
 		return
 	}
-	message := os.Args[1]
-	serverAddr := "localhost:8080"
+	serverAddr := os.Args[1]
+	message := os.Args[2]
 
 	// Connect to server
 	conn, err := net.Dial("tcp", serverAddr)
@@ -21,7 +21,6 @@ func main() {
 		return
 	}
 	defer conn.Close()
-
 	// Send message to server
 	_, err = conn.Write([]byte(message))
 	if err != nil {
@@ -36,7 +35,6 @@ func main() {
 		fmt.Println("Error to read response to the server: ", err)
 		return
 	}
-
 	response := string(buffer[:n])
 	fmt.Println("Response to the server:", response)
 
